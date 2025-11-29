@@ -23,6 +23,14 @@
   </select>
   <button onclick="addFleet()" id="addFleet">Add Fleet</button>
   <div id="vehicleContainer"></div>
+
+    <select name="" id="Category Filter" onclick="categoryFilter()">
+      <option value="All">All</option>
+      <option value="Auto">Auto</option>
+      <option value="Car">Car</option>
+      <option value="Truck">Truck</option>
+      <option value="Bus">Bus</option>
+    </select>
 </body>
 <script>
   function back(){
@@ -51,9 +59,9 @@
     document.getElementById("Category").value="";
     document.getElementById("DriverName").value="";
     document.getElementById("Availablility Status").value="";
-    
+
     vehicles.push(vehicle);
-    renderData(vehicle);
+    renderData(vehicles);
   }
 
   function renderData(vehicleList){
@@ -85,8 +93,23 @@
       card.appendChild(DriverName);
       card.appendChild(status);
 
-      container.appendChild(card)
+      container.appendChild(card);
+
+      console.log(card);
     })
   }
+
+  function categoryFilter(){
+    let category = document.getElementById("Category Filter").values;
+
+    if(category === 'All'){
+      renderData(vehicles);
+      return;
+    }
+
+    let filtered = vehicles.filter((vehicle => vehicle.category === category));
+    renderData(filtered);
+  }
+
 </script>
 </html>

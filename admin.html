@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin dashboard page</title>
+</head>
+<body>
+  <h1>Welcome to Dashboard Page</h1>
+  <button onclick="back()">Goto Login Page</button>
+
+  <input type="text" placeholder="Reg No of Vehicle" id="Reg No of Vehicle" required>
+  <select name="" id="Category" required>
+    <option value="Auto">Auto</option>
+    <option value="Car">Car</option>
+    <option value="Truck">Truck</option>
+    <option value="Bus">Bus</option>
+  </select>
+  <input type="text" id="" placeholder="DriverName" required>
+  <input type="checkbox">Available
+  <input type="checkbox" name="" id="">Unavailable
+  <button onclick="addFleet()">Add Fleet</button>
+</body>
+<script>
+  function back(){
+    window.location.href="index.html"
+  }
+  let vehicles=[];
+  let imageUrl ="https://coding-platform.s3.amazonaws.com/dev/lms/tickets/5e80fcb6-3f8e-480c-945b-30a5359eb40e/JNmYjkVr3WOjsrbu.png";
+  function addFleet(){
+    
+  }
+</script>
+</html>

@@ -31,6 +31,12 @@
       <option value="Truck">Truck</option>
       <option value="Bus">Bus</option>
     </select>
+
+    <select name="" id="availabilityFilter">
+      <option value="All">All</option>
+      <option value="Available">Available</option>
+      <option value="Unavailable">Unavailable</option>
+    </select>
 </body>
 <script>
   function back(){
@@ -108,6 +114,18 @@
     }
 
     let filtered = vehicles.filter((vehicle => vehicle.category === category));
+    renderData(filtered);
+  }
+
+  function availabilityFilter(){
+    let availabilityFilter = document.getElementById("availabilityFilter");
+
+    if(availabilityFilter === "All"){
+      renderData(vehicles);
+      return;
+    }
+
+    let filtered = vehicles.filter((vehilce => vehicle.Availability Status === Availability Status));
     renderData(filtered);
   }
 

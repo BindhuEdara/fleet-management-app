@@ -16,12 +16,12 @@
     <option value="Truck">Truck</option>
     <option value="Bus">Bus</option>
   </select>
-  <input type="text" id="" placeholder="DriverName" required>
+  <input type="text" id="DriverName" placeholder="DriverName" required>
   <select name="" id="Availability Status">
     <option value="">Available</option>
     <option value="">Unavailable</option>
   </select>
-  <button onclick="addFleet()" id="addFeet">Add Fleet</button>
+  <button onclick="addFleet()" id="addFleet">Add Fleet</button>
   <div id="vehicleContainer"></div>
 </body>
 <script>
@@ -46,8 +46,14 @@
       status,
       imageUrl
     }
+
+    document.getElementById("Reg No of Vehicle").value="";
+    document.getElementById("Category").value="";
+    document.getElementById("DriverName").value="";
+    document.getElementById("Availablility Status").value="";
+    
     vehicles.push(vehicle);
-    renderData();
+    renderData(vehicle);
   }
 
   function renderData(vehicleList){
@@ -73,12 +79,6 @@
       let status = document.createElement('p');
       status.textContent = vehicle.status;
 
-      let addFeetBtn = document.getElementById("addFeet");
-      addFeetBtn.textContent = "Add Feet";
-      addFeetBtn.className = "addFeetBtn";
-      addFeetBtn.addEventListener("click", ()=>{
-        addFeetBtn(index)
-      })
       card.appendChild(image);
       card.appendChild(vehNo);
       card.appendChild(category);

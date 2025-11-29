@@ -17,18 +17,76 @@
     <option value="Bus">Bus</option>
   </select>
   <input type="text" id="" placeholder="DriverName" required>
-  <input type="checkbox">Available
-  <input type="checkbox" name="" id="">Unavailable
-  <button onclick="addFleet()">Add Fleet</button>
+  <select name="" id="Availability Status">
+    <option value="">Available</option>
+    <option value="">Unavailable</option>
+  </select>
+  <button onclick="addFleet()" id="addFeet">Add Fleet</button>
+  <div id="vehicleContainer"></div>
 </body>
 <script>
   function back(){
     window.location.href="index.html"
   }
   let vehicles=[];
+
   let imageUrl ="https://coding-platform.s3.amazonaws.com/dev/lms/tickets/5e80fcb6-3f8e-480c-945b-30a5359eb40e/JNmYjkVr3WOjsrbu.png";
+
   function addFleet(){
-    
+    const vehNo
+     = document.getElementById("Reg No of Vehicle").value;
+    const category = document.getElementById("Category").value;
+    const DriverName = document.getElementById("DriverName").value;
+    const status = document.getElementById("Availablility Status").value;
+
+    let vehicle = {
+      vehNo,
+      category,
+      DriverName,
+      status,
+      imageUrl
+    }
+    vehicles.push(vehicle);
+    renderData();
+  }
+
+  function renderData(vehicleList){
+    let container = document.getElementById("vehicleContainer");
+    container.innerHTML="";
+
+    vehicleList.forEach((vehicle, index)=>{
+      let card = document.createElement('div')
+      card.className="card";
+
+      let image = document.createElement("image");
+      image.src = vehicle.imageUrl;
+
+      let vehNo = document.createElement('p');
+      vehNo.textContent = vehicle.vehNo;
+
+      let category = document.createElement('p');
+      category.textContent = vehicle.category;
+
+      let DriverName = document.createElement('p');
+      DriverName.textContent = vehicle.DriverName;
+
+      let status = document.createElement('p');
+      status.textContent = vehicle.status;
+
+      let addFeetBtn = document.getElementById("addFeet");
+      addFeetBtn.textContent = "Add Feet";
+      addFeetBtn.className = "addFeetBtn";
+      addFeetBtn.addEventListener("click", ()=>{
+        addFeetBtn(index)
+      })
+      card.appendChild(image);
+      card.appendChild(vehNo);
+      card.appendChild(category);
+      card.appendChild(DriverName);
+      card.appendChild(status);
+
+      container.appendChild(card)
+    })
   }
 </script>
 </html>
